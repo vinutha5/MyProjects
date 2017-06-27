@@ -1,0 +1,76 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.modal-header {
+    text-align: center;
+    margin-top: 10%
+}
+label {
+    width: 50%;
+}
+
+input[type="text"], input[type="password"]{
+  height: 30px;
+}
+
+
+.myHalfCol .col-lg-6{width:48%; margin:0 1% /* or auto */;}
+
+.myHalfCol .col-lg-6{padding:0 10px;}
+
+.navbar-default .navbar-nav>li>a {
+    color: #777;
+    margin-top: 5%;
+}
+
+.navbar-default .navbar-brand {
+    color: #08c;
+    FONT-WEIGHT: BOLD;
+}
+
+.container {
+    width: 1170px;
+    max-height: 700PX;
+    text-align: center;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+        width: 50%;
+    margin-left: 25%;
+    margin-top: 5%;
+    color: #3973e3;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+th{
+
+    background-color: #dedede;
+}
+
+td {
+    color: black;
+    font-weight: bold;
+}

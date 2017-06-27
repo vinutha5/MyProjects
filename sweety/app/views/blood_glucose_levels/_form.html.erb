@@ -1,0 +1,50 @@
+<%= form_for(@blood_glucose_level) do |f| %>
+  <% if @blood_glucose_level.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blood_glucose_level.errors.count, "error") %> prohibited this blood_glucose_level from being saved:</h2>
+
+      <ul>
+      <% @blood_glucose_level.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<br>
+<br>
+  <div class="row">
+    <%= f.label :patient_id %>
+    <%= f.select :patient_id, Patient.select("id, name").collect {|p| [ p.name, p.id ] } %>
+  </div>
+  <div class="row">
+    <%= f.label :glucose_result %>
+    <%= f.number_field :glucose_level , :min => 1, :max => 999 %><b>mg/dl</b>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<style type="text/css">
+  .h1, h1 {
+      font-size: 25px;
+  }
+  input[type="number"]{
+        height: 30px;
+      width: 19%;
+      margin-left: -1%;
+      margin-top: 2%;
+  }
+  label,button, input, select, textarea {
+    display: inline;
+  }
+  label {
+      display: inline;
+      margin-right: 5%;
+      text-align: right;
+      float: none;
+  }
+  input[type=submit]{
+    margin-top: 5%
+  }
+</style>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sweety</title>
+  <%= stylesheet_link_tag "bootstrap" %> 
+  <%= stylesheet_link_tag "bootstrap-responsive" %>
+  <%= javascript_include_tag 'bootstrap' %>
+  <%= javascript_include_tag 'jquery-3.2.1'%>
+  <%= javascript_include_tag 'jquery-ui'%>
+
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<div class="container">
+	<div class="row">
+        <div class="span12">
+    		<div class="" id="loginModal">
+              <div class="modal-header">
+              <p id="notice" style="color:red"><%= notice %></p>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>Welcome to SWEETY - Diabetes Tracker</h3>
+              </div>
+              <div class="modal-body">
+                <div class="well">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+                    <li><a href="#create" data-toggle="tab">Create Account</a></li>
+                  </ul>
+                  <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane active in" id="login">
+                      <form class="form-horizontal" action='autheticate' method="POST">
+                        <fieldset>
+                          <div id="legend">
+                            <legend class="">Login</legend>
+                          </div>    
+                          <div class="control-group">
+                            <!-- Username -->
+                            <label class="control-label"  for="username">Username</label>
+                            <div class="controls">
+                              <input type="text" id="username" name="username" placeholder="" class="input-xlarge" required>
+                            </div>
+                          </div>
+     
+                          <div class="control-group">
+                            <!-- Password-->
+                            <label class="control-label" for="password">Password</label>
+                            <div class="controls">
+                              <input type="password" id="password" name="password" placeholder="" class="input-xlarge" required>
+                            </div>
+                          </div>
+     
+     
+                          <div class="control-group">
+                            <!-- Button -->
+                            <div class="controls">
+                              <button class="btn btn-success">Login</button>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </form>                
+                    </div>
+                    <div class="tab-pane fade" id="create">
+
+                    <%= form_tag('/create', :method=>'post', :multipart => true) do %>
+                    <div class="main col-lg-9 myHalfCol">
+                        <div class="col-lg-6">
+                        <label>Username</label>
+                        <%= text_field_tag :username, '', :class=>"input-xlarge"%><br />
+                        <label>First Name</label>
+                        <%= text_field_tag :first_name, '',:class=>"input-xlarge"%><br />
+                        <label>Last Name</label>
+                        <%= text_field_tag :last_name, '',:class=>"input-xlarge"%><br />
+                        <label>Password</label>
+                        <%= text_field_tag :password, '', :class=>"input-xlarge"%><br />
+                        <label>Email</label>
+                        <%= text_field_tag :email, '',:class=>"input-xlarge"%><br />
+                        </div>
+
+                        <div class="col-lg-6">
+                        <label>Address</label>
+                        <%= text_field_tag :address, '',:class=>"input-xlarge"%><br />
+                        <label>Phone Number</label>
+                        <%= text_field_tag :phone, '',:class=>"input-xlarge"%><br />                    
+                        <label>Account Type</label>
+                        <%= select "account","type", [['Patient', 'Patient'],['Doctor', 'Doctor']], :html_options=>{:onChange=>"showbloodgroup();"} %>
+                        <label>Blood Group</label>
+                        <%= select  'patient','bloodgroup',[["B-"],["B+"],["O+"],["O-"],["A+"],["A-"],["AB+"],["AB-"]]%>
+                        <br>
+                        <%= submit_tag 'Submit' %>
+                        <% end %>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+	</div>
+</div>
+</div>
+</body>
+</html>
+
+<style>
+  .modal-body {
+    max-height: 700px;
+}
+input[type="text"], input[type="password"]{
+  height: 10%;
+}
+select {
+    width: 270px;
+    }
+</style>
+
+<script>
+
+  function showbloodgroup()
+  {
+    var account_type = jQuery("#account_type").val()
+    alert(account_type);
+    if (account_type == "Doctor"){
+      jQuery("#patient_bloodgroup").hide();
+    } else {
+      jQuery("#patient_bloodgroup").show();
+    }
+  }
+</script>

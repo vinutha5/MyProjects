@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sweety</title>
+  <%= stylesheet_link_tag    'application' , media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= stylesheet_link_tag "bootstrap.min.css" %> 
+  <%= stylesheet_link_tag "bootstrap-responsive.css" %>
+  <%= javascript_include_tag 'bootstrap.min.js' %>
+  <%= javascript_include_tag 'jquery-3.2.1.js'%>
+  <%= javascript_include_tag 'jquery-ui.js'%>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<% if (session[:username] != nil) %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">SWEETY - Diabetes Tracker</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li> <a href="/home" >Home</a></li>
+      <% if session[:account] != "Doctor" %>
+      <li><a href="/blood_glucose_levels/new" >Record</a></li>
+      <% end %>
+      <li><a href="/reports" >Reports</a></li>
+      <li><a href="/logout" >Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+  <% end %>
+<div class="container">
+  <%= yield %>
+</div>
+
+
+</body>
+</html>
+
+
+

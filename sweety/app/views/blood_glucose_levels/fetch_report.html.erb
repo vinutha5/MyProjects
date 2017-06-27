@@ -1,0 +1,41 @@
+
+<Div class= "row" id="name">
+<label>Name :  </label> <%=@patientname%> 
+</Div>
+
+<Div class= "row" id="bloodgroup">
+<label>Blood Group :  </label>  <%=@bloodgroup%></Div>
+<table class="pure-table">
+
+<thead>
+<th>Date</th>
+<th>Glucose level</th>
+</thead>
+<tbody>
+<% @records.each_with_index do |record, index|%>
+
+<tr>
+
+<td><%= record.created_at %></td>
+
+<td><%= record.glucose_level %></td>
+<tr>
+<% end %>
+  </tbody>
+</table>
+
+<style>
+#name{
+	float: left; width: 25%;
+	    font-size: larger;
+        color: #3973e3;
+    font-weight: bold;
+}
+#bloodgroup{
+	float: right;width: 25%;
+	    font-size: larger;
+        color: #3973e3;
+    font-weight: bold;
+}
+
+</style>
